@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a class="btn btn-primary" href="{% url 'task:create' %}">Add new task</a>
+
+
+<table class="table mb-4">
+  <thead>
+    <tr>
+      <th scope="col">Priority</th>
+      <th scope="col">Todo item</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      {% for task in tasks %}
+
+      {% if task.priority == 1 %}
+      <th scope="row" class="badge bg-danger">Hight</th>
+      
+      {% elif task.priority == 2 %}
+      <th scope="row" class="badge bg-warning">Middle</th>
+
+      {% elif task.priority == 3 %}
+      <th scope="row" class="badge bg-success">Low</th>
+      {% endif %}
+
+      {% if task.status == False %}
+
+      <td>{{task.body}}</td>
+      <td>In progress</td>
+
+      {% else %}
+      <td class="text-decoration-line-through">{{task.body}}</td>
+      <td>Done</td>
+      {% endif %}
+
+      <td>
+        <a href="{% url 'task:delete' id=task.id %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'task:update' id=task.id %}" class="btn btn-warning">Update</a>
+        <a href="{% url 'task:finish' id=task.id %}" class="btn btn-success">Finish</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+{% endblock %}
