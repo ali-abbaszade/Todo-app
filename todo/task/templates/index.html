@@ -1,8 +1,43 @@
 {% extends 'base.html' %}
 
+
+
+
+
 {% block content %}
 
-<a class="btn btn-primary" href="{% url 'task:create' %}">Add new task</a>
+
+<h4 class="text-center my-3 pb-3"> Hello {{request.user|title}}</h4>
+
+<h6 class="text-center my-3 pb-3">You have {{count}} incomplete task{{count|pluralize:"s"}}</h6>
+
+
+<nav class="navbar navbar-expand-lg bg-light mb-4">
+  <div class="container-fluid">
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+
+      </ul>
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="btn btn-success" class="nav-link active" href="{% url 'task:create' %}">Add new
+            task</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="btn btn-danger" class="nav-link active" href="{% url 'users:logout' %}">Logout</a>
+        </li>
+      </ul>
+      <form method="get" class="d-flex" role="search">
+        <input class="form-control me-2" name="search" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
 
 
 <table class="table mb-4">
@@ -20,7 +55,7 @@
 
       {% if task.priority == 1 %}
       <th scope="row" class="badge bg-danger">Hight</th>
-      
+
       {% elif task.priority == 2 %}
       <th scope="row" class="badge bg-warning">Middle</th>
 

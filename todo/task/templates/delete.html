@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<form method="post" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+    {% csrf_token %}
+    <div class="col-12">
+        <div class="form-outline">
+            <p>Are sure you want delete "{{task}}"?</p>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </div>
+
+    <div class="col-12">
+        <a class="btn btn-primary" href="{% url 'task:index' %}">Back</a>
+    </div>
+</form>
+
+
+
+{% endblock %}

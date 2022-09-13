@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 
 PRIORITY_CHOICES = (
@@ -9,7 +9,7 @@ PRIORITY_CHOICES = (
 )
 class Task(models.Model):
     body = models.CharField(max_length=300)
-    # user
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     priority = models.IntegerField(choices=PRIORITY_CHOICES)
     status = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)    

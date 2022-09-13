@@ -4,20 +4,24 @@
 {% block content %}
 
 <form method="post" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
-    {% csrf_token %}
-    <div class="col-12">
-      <div class="form-outline">
-        {% for field in form %}
-        <label for="">{{field.label}}</label>
-        {{field}}
-        {% endfor %}
-      </div>
+  {% csrf_token %}
+  <div class="col-12">
+    <div class="form-outline">
+      {% for field in form %}
+      <label for="">{{field.label}}</label>
+      {{field}}
+      {% endfor %}
     </div>
-  
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary">Update</button>
-    </div>
-  </form>
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Update</button>
+  </div>
+
+  <div class="col-12">
+    <a class="btn btn-warning" href="{% url 'task:index' %}">Back</a>
+  </div>
+</form>
 
 
 

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<form method="post" class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+    {% csrf_token %}
+    <div class="form-outline">
+        {% for field in form %}
+        <label for="">{{field.label}}</label>
+        <p>{{field}}</p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+
+    <div>
+        <a class="btn btn-primary" class="nav-link active" href="{% url 'users:signup' %}">Signup</a>
+    </div>
+</form>
+
+
+
+
+{% endblock %}
